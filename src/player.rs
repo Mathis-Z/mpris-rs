@@ -727,6 +727,13 @@ impl Player {
             .map_err(DBusError::from)
     }
 
+    /// Adding fucking open_uri (Why was this missing anyway??)
+    pub fn open_uri(&self, uri: &str) -> Result<(), DBusError> {
+        self.connection_path()
+            .open_uri(uri)
+            .map_err(DBusError::from)
+    }
+
     /// Add a URI to the TrackList and optionally set it as current.
     ///
     /// It is placed after the specified [`TrackID`], if supported by the player.
